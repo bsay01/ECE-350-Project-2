@@ -27,4 +27,4 @@ USER appuser
 
 # What the container should run when it is started.
 #ENTRYPOINT [ "/src/start_433.sh" ]
-CMD bash /src/start_433.sh
+CMD sudo bash /src/start_433.sh
