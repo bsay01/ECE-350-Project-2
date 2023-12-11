@@ -1,5 +1,8 @@
 # syntax=docker/dockerfile:1
 
+# THIS IS THE BASE IMAGE DOCKERFILE - IT TAKES A WHILE TO BUILD!
+# can be built using it's script in the main directory of the repo
+
 # Pick a base image to serve as the foundation for the other build stages in this file.
 FROM ubuntu:latest as base
 

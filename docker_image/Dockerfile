@@ -15,19 +15,5 @@ WORKDIR /src
 # configure libraries
 RUN ldconfig
 
-# Create a non-privileged user that the app will run under.
-# See https://docs.docker.com/go/dockerfile-user-best-practices/
-#ARG UID=10001
-#RUN adduser \
-#    --disabled-password \
-#    --gecos "" \
-#    --home "/nonexistent" \
-#    --shell "/sbin/nologin" \
-#    --no-create-home \
-#    --uid "${UID}" \
-#    appuser
-#USER appuser
-
 # What the container should run when it is started.
-#ENTRYPOINT [ "/src/start_433.sh" ]
 CMD bash /src/start_433.sh
