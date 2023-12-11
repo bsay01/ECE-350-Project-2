@@ -9,6 +9,9 @@ FROM base as build
 # copy all files for project into image
 COPY ./start_433.sh /src
 
+WORKDIR /src/data
+WORKDIR /src
+
 # configure libraries
 RUN ldconfig
 
