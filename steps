@@ -1,3 +1,5 @@
+without docker or any networking:
+
 "make directory for project"
 "remember to use SUDO - we didn't"
 
@@ -18,7 +20,7 @@ mkdir build
 cd build/
 cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
 
-"we tried without the second flag - didn't work because the kernel driver 
+"we tried without the second flag - didn't work because the kernel driver
 	for the rtl-sdr was getting in the way."
 
 sudo make install
@@ -39,7 +41,7 @@ sudo apt-get install libtool libusb-1.0-0-dev librtlsdr-dev build-essential cmak
 
 git clone https://github.com/merbanan/rtl_433.git
 cd rtl_433
-mkdir build 
+mkdir build
 cd build/
 cmake ..
 sudo make
