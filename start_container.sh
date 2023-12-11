@@ -2,4 +2,4 @@
 
 docker run -d --mount source=rtl_433_output,target=/src/data
 
-docker system prune -a -f --volumes
+# docker system prune -a -f --volumes
