@@ -2,7 +2,15 @@
 
 # for a raspberry pi running Raspbian 11 Bullseye
 
+# uninstall docker packages
 for pkg in docker.io docker-doc docker-compose podman-docker containerd runc; do sudo apt-get remove $pkg; done
+
+# uninstall docker engine
+sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+
+# reinstall docker
 
 # Add Docker's official GPG key:
 sudo apt-get update
@@ -22,7 +30,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 sudo docker run hello-world
 
-sudo groupadd docker
+sudo groupadd -f docker
 
 sudo usermod -aG docker $USER
 
@@ -35,3 +43,4 @@ docker run hello-world
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
+
