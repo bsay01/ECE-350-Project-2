@@ -10,7 +10,7 @@ FROM base as build
 WORKDIR /src
 
 # copy all files for project into image
-COPY . .
+COPY ./start_433.sh /src
 
 # set up rtl-sdr
 RUN git clone https://github.com/osmocom/rtl-sdr.git
