@@ -1,0 +1,50 @@
+"make directory for project"
+"remember to use SUDO - we didn't"
+
+sudo apt-get install git
+sudo apt-get cmake
+sudo apt-get install cmake
+sudo apt-get install libusb-1.0-0.dev
+sudo apt-get install build-essential
+
+"reboot"
+"cd into the dir for the project"
+"we tried making it in root - didn't work"
+
+git clone https://github.com/osmocom/rtl-sdr.git
+sudo rmmod dvb_usb_rtl28xxu
+cd {your path}/rtl-sdr/
+mkdir build
+cd build/
+cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
+
+"we tried without the second flag - didn't work because the kernel driver 
+	for the rtl-sdr was getting in the way."
+
+sudo make install
+sudo ldconfig
+
+"reboot"
+
+sudo rtl_test -t
+
+"test should run and work"
+"will throw an error that "No E4000 tuner found, aborting." which is fine"
+
+NOW INSTALL RTL433
+
+sudo apt-get install libtool libusb-1.0-0-dev librtlsdr-dev build-essential cmake pkg-config
+
+"cd to project folder"
+
+git clone https://github.com/merbanan/rtl_433.git
+cd rtl_433
+mkdir build 
+cd build/
+cmake ..
+sudo make
+sudo make install
+cd /
+rtl_433
+
+SHOULD JUST RUN!
