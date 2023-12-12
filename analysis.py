@@ -28,9 +28,9 @@ print("\nFiles must be in the current folder or in subdirectories of the current
 print("All files must have the same headers. note that including a previous output of this file is fine.\n")
 
 # list to store files
-files = checkDirForCSV(".\\") # check for csv files in the current directory
+files = checkDirForCSV(".\\data") # check for csv files in the current directory
 files.sort()
-print()
+print
 
 # this block confirms which files should be used. any entry throws error, do not use.
 """
@@ -57,7 +57,7 @@ for file in files:
     for row in csv.reader(open_file, delimiter = ','):
         if not csvRowEmpty(row) and row not in allData: allData.append(row)
     open_file.close
-print()
+print
 
 ### DATA LOADED INTO A SINGLE TABLE ###
 
@@ -67,8 +67,10 @@ print()
 
 finalFileName = "data_total.csv"
 
+#outputFile = open(".\\data\\" + finalFileName, mode="w", newline="")
+
 try:
-    outputFile = open(".\\" + finalFileName, mode="w", newline="")
+    outputFile = open(".\\data\\" + finalFileName, mode="w")
 except:
     print("Error: could not create or write to output file.\nThis will throw if you have the file open.\n\nExiting...\n")
     exit()
@@ -77,5 +79,8 @@ print("Combining...\n")
 csv.writer(outputFile).writerows(allData)
 
 outputFile.close()
+
+#print(allData)
+#print
 
 print("Combined csv entitled \"" + finalFileName + "\"\n\nExiting...\n")
