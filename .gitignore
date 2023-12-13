@@ -1,4 +1,4 @@
 data/log.json
 data/log.csv
 data/data_total.csv
-after_pandas/*
+data_processed/*
