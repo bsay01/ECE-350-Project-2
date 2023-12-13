@@ -1,4 +1,7 @@
-data/log.json
-data/log.csv
-data/data_total.csv
-data_processed/*
+# ignore input and output data
+data/**
+data_processed/**
+
+# but keep input and output data folders
+!data/0-info.md
+!data_processed/0-info.md
