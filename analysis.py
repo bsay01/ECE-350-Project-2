@@ -1,4 +1,4 @@
-import os, csv
+import os, csv, pandas, numpy
 
 ### FUNCTIONS ###
 
@@ -66,3 +66,34 @@ outputFile.close()
 #print
 
 print("Combined csv entitled \"" + finalFileName + "\"\n\nExiting...\n")
+
+df = pandas.read_csv(files[0], )
+for file in files:
+    print("Adding file \"" + file + "\"...")
+    df = pandas.concat([df, pandas.read_csv(file)]).drop_duplicates()
+print
+
+df.dropna(how = 'all', axis = 1, inplace = True)
+df.sort_values('time')
+
+device_names = []
+device = [0, 0]
+for model, id in zip(df['model'], df['id']):
+    device = [model, id]
+    if device not in device_names:
+        device_names.append(device)
+
+temp_df = df
+nan_value = numpy.float64("NaN")
+for device in device_names:
+    temp_df = df[df['model'] == device[0]]
+    temp_df = temp_df[temp_df['id'] == device[1]]
+    #print(temp_df)
+    temp_df.replace("", nan_value, inplace=True)
+    temp_df.dropna(how = 'all', axis = 1, inplace = True)
+    #print(temp_df)
+    temp_df.to_csv(".\\after_pandas\\{model}_{id}.csv".format(model=device[0], id=device[1]))
+
+df.to_csv(".\\after_pandas\\0-after_pandas.csv")
+
+print(type(df['msg'][1]))
